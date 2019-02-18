@@ -7,7 +7,7 @@ public class User extends SuperEntity {
     /**
      * 用户id
      */
-    private String userNumer;
+    private String userNumber;
     /**
      * 昵称
      */
@@ -21,18 +21,18 @@ public class User extends SuperEntity {
     public User() {
     }
 
-    public User(String userNumer, String nickName, String email) {
-        this.userNumer = userNumer;
+    public User(String userNumber, String nickName, String email) {
+        this.userNumber = userNumber;
         this.nickName = nickName;
         this.email = email;
     }
 
-    public String getUserNumer() {
-        return userNumer;
+    public String getUserNumber() {
+        return userNumber;
     }
 
-    public void setUserNumer(String userNumer) {
-        this.userNumer = userNumer;
+    public void setUserNumber(String userNumber) {
+        this.userNumber = userNumber;
     }
 
     public String getNickName() {
