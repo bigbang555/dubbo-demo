@@ -1,10 +1,18 @@
 package com.deepexi.user.service;
 
-import com.deepexi.user.domain.eo.User;
-import java.util.List;
+import com.deepexi.user.domain.eo.Cuser;
+import com.deepexi.util.pageHelper.PageBean;
 
 public interface UserService {
 
-    List<User> getAllUser();
+    PageBean getUserList(Integer page, Integer size);
+
+    Object getUserById(String id);
+
+    boolean createUser(Cuser user);
+
+    boolean deleteUserById(String id);
+
+    boolean updateUser(String id, Cuser user);
 
 }

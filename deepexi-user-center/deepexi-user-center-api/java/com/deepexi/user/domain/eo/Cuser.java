@@ -2,10 +2,15 @@ package com.deepexi.user.domain.eo;
 
 import com.deepexi.util.mapper.SuperEntity;
 
-public class User extends SuperEntity {
+public class Cuser extends SuperEntity {
 
     /**
-     * 用户id
+     * 用户名
+     */
+    private String userName;
+
+    /**
+     * 用户编号
      */
     private String userNumber;
     /**
@@ -14,17 +19,26 @@ public class User extends SuperEntity {
     private String nickName;
 
     /**
-    *  邮箱
-    * */
+     * 邮箱
+     */
     private String email;
 
-    public User() {
+    public Cuser() {
     }
 
-    public User(String userNumber, String nickName, String email) {
+    public Cuser(String userName, String userNumber, String nickName, String email) {
+        this.userName = userName;
         this.userNumber = userNumber;
         this.nickName = nickName;
         this.email = email;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserNumber() {
