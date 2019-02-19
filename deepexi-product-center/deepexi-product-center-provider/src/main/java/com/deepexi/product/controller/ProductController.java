@@ -4,12 +4,14 @@ import com.deepexi.product.service.ProductService;
 import com.deepexi.product.domain.eo.Product;
 import com.deepexi.util.config.Payload;
 import com.deepexi.util.constant.ContentType;
+import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.*;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 @Path("/api/v1/products")
@@ -24,9 +26,9 @@ public class ProductController {
 
     @GET
     @Path("/")
-    public Payload getProductList(@QueryParam("page") @DefaultValue("1")  Integer page,
-                                  @QueryParam("size") @DefaultValue("10")  Integer size,
-                                  @QueryParam("age") @DefaultValue("0")  Integer price) {
+    public Payload getProductList(@QueryParam("page") @DefaultValue("1") Integer page,
+            @QueryParam("size") @DefaultValue("10") Integer size,
+            @QueryParam("age") @DefaultValue("0") Integer price) {
         return new Payload(productService.getProductList(page, size, price));
     }
 
@@ -37,7 +39,6 @@ public class ProductController {
     }
 
     @POST
-    @Path("/")
     public Payload createProduct(Product product) {
         return new Payload(productService.createProduct(product));
     }

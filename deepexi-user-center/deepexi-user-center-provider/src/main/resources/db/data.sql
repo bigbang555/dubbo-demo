@@ -20,19 +20,23 @@ DROP TABLE IF EXISTS uc_user;
 CREATE TABLE IF NOT EXISTS uc_user(id varchar(32) unsigned not null primary key,username varchar(32),
 usernumber varchar(32),nickname varchar(32),email varchar(32),created_by varchar(32),updated_by varchar(32),created_at date,updated_at date, dr int(1));
 
-INSERT INTO uc_user(id, usernumber, nickname, email, created_by, updated_by, created_at, updated_at, dr) VALUES
-('1', '1', '小红', '1@xx.com', null, null, null, null, 0),
-('2', '2', '小黄', '2@xx.com', null ,null, null, null, 0),
-('3', '3', '小绿', '3@xx.com', null ,null, null, null, 0),
-('4', '4', '小刚', '4@xx.com', null ,null, null, null, 0),
-('5', '5', '小黑', '5@xx.com', null ,null, null, null, 0),
-('6', '6', '小蓝', '6@xx.com', null ,null, null, null, 0),
-('7', '7', '小紫', '7@xx.com', null ,null, null, null, 0),
-('8', '8', '小兔', '8@xx.com', null ,null, null, null, 0),
-('9', '9', '小猫', '9@xx.com', null ,null, null, null, 0),
-('10', '10', '小狗', '10@xx.com', null ,null, null, null, 0),
-('11', '11', '小弟', '11@xx.com', null ,null, null, null, 0),
-('12', '12', '小花', '12@xx.com', null ,null, null, null, 0);
+
+
+DROP TABLE IF EXISTS component;
+CREATE TABLE IF NOT EXISTS component(id varchar(32) unsigned not null primary key,name varchar(32),
+category varchar(32),version varchar(32),status varchar(32), tenant_id varchar(32),created_by varchar(32),updated_by varchar(32),created_at date,updated_at date, dr int(1));
+
+INSERT INTO product(id, name, category, version, status, tenant_id ,created_by, updated_by, created_at, updated_at, dr) VALUES
+('1', 'edas-config', '基础设施', 'v1.0.0', '在架', null ,null, null, null, null, 0),
+('2', 'sonar',  '基础设施', 'v1.0.0', '在架', null ,null ,null, null, null, 0),
+('3', 'Rocket-MQ',  '基础设施', 'v1.0.0',  '在架',null , null ,null, null, null, 0),
+('4', 'Zookeeper',  '基础设施', 'v1.0.0',  '在架',null , null ,null, null, null, 0),
+('5', 'TiDB',  '基础设施', 'v1.0.0', '下架', null ,null ,null, null, null, 0),
+('6', 'Redis',  '基础设施', 'v1.0.0', '下架',null , null ,null, null, null, 0),
+('7', 'Kafka',  '基础设施', 'v1.0.0', '下架',null , null ,null, null, null, 0),
+('8', 'MongoDB',  '基础设施', 'v1.0.0', '在架',null , null ,null, null, null, 0),
+('9', 'MySQL',  '基础设施', 'v1.0.0', '下架', null ,null ,null, null, null, 0),
+('10', '营销中心',  '基础设施', 'v1.0.0', '在架',null , null ,null, null, null, 0);
 
 
 

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deepexi.user.mapper.ComponentMapper">
+  <resultMap id="myResultMap" type="map">
+    <result column="ID" property="id"/>
+    <result column="NAME" property="name"/>
+    <result column="CATEGORY" property="category"/>
+    <result column="VERSION" property="version"/>
+    <result column="STATUS" property="status"/>
+    <result column="TENANT_ID" property="tenantId"/>
+    <result column="CREATED_BY" property="createdBy"/>
+    <result column="UPDATED_BY" property="updatedBy"/>
+    <result column="CREATED_AT" property="createdAt"/>
+    <result column="UPDATED_AT" property="updatedAt"/>
+    <result column="DR" property="dr"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="map">
+    INSERT INTO JISP_GRAY_RULES
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      ID,
+      <if test="serviceid !=null and serviceid !='' ">
+        SERVICEID,
+      </if>
+      <if test="rules !=null and rules != '' ">
+        RULES,
+      </if>
+      <if test="rulescode !=null and rulescode !='' ">
+        RULESCODE,
+      </if>
+      <if test="rulesname !=null and rulesname !='' ">
+        RULESNAME,
+      </if>
+      <if test="ruletype !=null and ruletype !='' ">
+        RULETYPE,
+      </if>
+      <if test="implclass !=null and implclass !='' ">
+        IMPLCLASS,
+      </if>
+      <if test="createuser !=null and createuser !='' ">
+        CREATEUSER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id},
+      <if test="serviceid !=null and serviceid !='' ">
+        #{serviceid},
+      </if>
+      <if test="rules !=null and rules != '' ">
+        #{rules},
+      </if>
+      <if test="rulescode !=null and rulescode !='' ">
+        #{rulescode},
+      </if>
+      <if test="rulesname !=null and rulesname !='' ">
+        #{rulesname},
+      </if>
+      <if test="ruletype !=null and ruletype !='' ">
+        #{ruletype},
+      </if>
+      <if test="implclass !=null and implclass !='' ">
+        #{implclass},
+      </if>
+      <if test="createuser !=null and createuser !='' ">
+        #{createuser},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="map">
+    update JISP_GRAY_RULES
+    <set>
+      <if test="serviceid != null and serviceid != '' ">
+        SERVICEID = #{serviceid},
+      </if>
+      <if test="rules != null and rules != '' ">
+        RULES = #{rules},
+      </if>
+      <if test="ruletype != null and ruletype != '' ">
+        RULETYPE =#{ruletype},
+      </if>
+      <if test="rulescode !=null and rulescode != '' ">
+        RULESCODE = #{rulescode},
+      </if>
+      <if test="updateuser !=null and updateuser !='' ">
+        UPDATEUSER=#{updateuser},
+      </if>
+      <if test="implclass !=null and implclass !='' ">
+        IMPLCLASS = #{implclass}
+      </if>
+    </set>
+    where ID=#{id}
+  </update>
+
+  <delete id="delete" parameterType="map">
+		DELETE  JISP_GRAY_RULES WHERE ID = #{id}
+	</delete>
+  <select id="selectPageData" parameterType="map" resultMap="myResultMap">
+    <include
+      refid="com.szkingdom.jros.msf.actuator.manager.mapper.page.page_select"/>
+    <include
+      refid="com.szkingdom.jros.msf.actuator.manager.mapper.commgrayrules.select_commonrul_list">
+    </include>
+    <include
+      refid="com.szkingdom.jros.msf.actuator.manager.mapper.page.page_where"/>
+  </select>
+
+
+  <select id="selectCount" parameterType="map"
+    resultType="map">
+    SELECT
+    count(1) as "total"
+    FROM
+    (
+    <include
+      refid="com.szkingdom.jros.msf.actuator.manager.mapper.commgrayrules.select_commonrul_list"/>
+    ) totaltable
+  </select>
+
+  <select id="selectExist" parameterType="map" resultType="map">
+		select * from jisp_gray_rules where rulescode = #{rulescode}
+	</select>
+  <select id="selectAllCommonRules" parameterType="map" resultMap="myResultMap">
+    <include
+      refid="com.szkingdom.jros.msf.actuator.manager.mapper.commgrayrules.select_commonrul_list">
+    </include>
+  </select>
+
+</mapper>
